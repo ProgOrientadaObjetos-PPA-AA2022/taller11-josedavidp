@@ -11,11 +11,11 @@ import paquete02.Menu;
  * @author josed
  */
 public class MenuEconomico extends Menu {
-    //porcentaje de descuento, en referencia al valor inicial del menú
     private double porcentajeDescuento;
     
-    public MenuEconomico(String np, double vim) {
+    public MenuEconomico(String np, double vim, double pd) {
         super(np, vim);
+        porcentajeDescuento = pd;
     }
 
     public void establecerPorcentajeDescuento(double pd) {
@@ -23,7 +23,7 @@ public class MenuEconomico extends Menu {
     }
 
     @Override
-    public void establecerValorMenu() {
+    public void calcularValorMenu() {
         valorMenu = valorInicialMenu - (valorInicialMenu * porcentajeDescuento / 100);
     }
 
@@ -32,9 +32,14 @@ public class MenuEconomico extends Menu {
     }
 
     @Override
-    public String toString() {
-        String cadena = String.format("%s\n"
-                + "Porcentaje de Descuento: %.2f\n", super.toString(), porcentajeDescuento);
+    public String toString(){
+        String cadena = String.format("Menú Econónomico: \n"
+                + "\tPlato: %s\n\tValor Inicial: %.2f\n\tPorcentaje Descuento: %.2f\n"
+                + "\tValor del Menú: %.2f\n\n",
+                nombrePlato,
+                valorInicialMenu,
+                porcentajeDescuento,
+                valorMenu);
         return cadena;
     }
 }

@@ -15,7 +15,7 @@ public abstract class Menu {
         nombrePlato = np;
     }
 
-    public abstract void establecerValorMenu();
+    public abstract void calcularValorMenu();
 
     public void establecerValorInicialMenu(double vim) {
         valorInicialMenu = vim;
@@ -37,7 +37,7 @@ public abstract class Menu {
     public String toString(){
         String cadena = String.format("Nombre del Plato: %s\n"
                 + "Valor del Menú: %.2f\n"
-                + "ValorInicialMenu: %.2f\n", nombrePlato, valorMenu, valorInicialMenu);
+                + "ValorInicialMenu: %.2f\n\n", nombrePlato, valorMenu, valorInicialMenu);
         return cadena;
     }
 }

@@ -19,13 +19,19 @@ public class Cuenta {
     private double iva;
     
 
-    public Cuenta(String nc) {
+    public Cuenta(String nc, ArrayList<Menu> lista) {
         nombreCliente = nc;
-        listaMenus = new ArrayList<>();
+        listaMenus = lista;
+    }
+    
+    public Cuenta(String nc, ArrayList<Menu> lista, double i) {
+        nombreCliente = nc;
+        listaMenus = lista;
+        iva = i;
     }
 
-    public void establecerValorCancelar(double vc) {
-        valorCancelar = vc;
+    public void establecerValorCancelar() {
+        valorCancelar = subtotal + ((subtotal * iva)/100);
     }
     
     public void establecerNombreCliente(String nc) {
@@ -65,16 +71,15 @@ public class Cuenta {
     
     @Override
     public String toString(){
-        String cadena = String.format("Nombre del cliente: %s\n", 
+        String cadena = String.format("Factura\nCliente: %s\n", 
                 nombreCliente);
         for (Menu m : listaMenus) {
             cadena += m.toString();
         }
-        cadena += String.format("Valor a cancelar: %.2f\n"
-                + "Subtotal: %.2f\nIva: %.2f\n",
-                valorCancelar, 
+        cadena += String.format("Subtotal: %.1f\nIVA: %.1f\nTotal a pagar: %.3f",
                 subtotal, 
-                iva);
+                iva,
+                valorCancelar);
                 return cadena;
     }
 }
